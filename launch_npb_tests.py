@@ -73,7 +73,7 @@ gem5_binary = Artifact.registerArtifact(
 gem5_binary_MESI_Two_Level = Artifact.registerArtifact(
     command = '''cd gem5;
     git checkout v20.1.0.0;
-    scons build/X86_MESI_Two_Level/gem5.opt --default=X86 PROTOCOL=MESI_Two_Level SLICC_HTML=True -j8
+    scons gem5/build/X86/gem5.opt --default=X86 PROTOCOL=MESI_Two_Level SLICC_HTML=True -j8
     ''',
     typ = 'gem5 binary',
     name = 'gem5',
