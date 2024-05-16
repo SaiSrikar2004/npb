@@ -106,18 +106,7 @@ linux_binary = Artifact.registerArtifact(
     inputs = [experiments_repo, linux_repo,],
     documentation = "kernel binary for v4.19.83",
 )
-
-
-if __name__ == "__main__":
-    num_cpus = ['1', '8']
-    benchmarks = ['is.x', 'ep.x', 'cg.x', 'mg.x','ft.x', 'bt.x', 'sp.x', 'lu.x']
-
-    classes = ['A']
-    mem_sys = ['MESI_Two_Level']
-    cpus = ['kvm', 'timing']
-
-
-    def createRun(bench, clas, cpu, mem, num_cpu):
+def createRun(bench, clas, cpu, mem, num_cpu):
         
         if mem == 'MESI_Two_Level':
             binary_gem5 = 'gem5/build/X86_MESI_Two_Level/gem5.opt'
@@ -139,7 +128,13 @@ if __name__ == "__main__":
             timeout = 240*60*60 #240 hours
             )
 
+if __name__ == "__main__":
+    num_cpus = ['1', '8']
+    benchmarks = ['is.x', 'ep.x', 'cg.x', 'mg.x','ft.x', 'bt.x', 'sp.x', 'lu.x']
 
+    classes = ['A']
+    mem_sys = ['MESI_Two_Level']
+    cpus = ['kvm', 'timing']
     # For the cross product of tests, create a run object.
     runs = starmap(createRun, product(benchmarks, classes, cpus, mem_sys, num_cpus))
     # Run all of these experiments in parallel
