@@ -78,7 +78,7 @@ gem5_binary_MESI_Two_Level = Artifact.registerArtifact(
     typ = 'gem5 binary',
     name = 'gem5',
     cwd = 'gem5/',
-    path =  'gem5/build/X86_MESI_Two_Level/gem5.opt',
+    path =  'gem5/build/X86/gem5.opt',
     inputs = [gem5_repo,],
     documentation = 'gem5 binary based on v20.1.0.0'
 )
